@@ -13,7 +13,7 @@ class TestEatery < MiniTest::Test
     @bobs_burgers.save()
     @burgers_r_us = Eatery.new({'name' => 'Burgers R Us', 'location' => 'Edinburgh'})
     @burgers_r_us.save()
-
+    @burger_meats_burger = Eatery.new({'name' => 'Burger Meats Burger', 'location' => 'Edinburgh'})
   end
 
   def test_eatery_has_name
@@ -24,14 +24,16 @@ class TestEatery < MiniTest::Test
     assert_equal('Edinburgh', @burgers_r_us.location)
   end
 
-  #this is db method so can't be tested directly
   def test_eatery_saved_to_db
-    @bobs_burgers.save()
+    name_pre_save = @burger_meats_burger.name
+    @burger_meats_burger.save()
+    found_eatery = Eatery.find(@burger_meats_burger.id)
+    assert_equal(name_pre_save, found_eatery.name)
   end
 
   #For documentary purposes.
   def test_all_eateries_returns_eateries_from_db()
-    skip "numbers will change and break test."
+    skip "numbers will change and break test during development."
     all_eateries = Eatery.all()
     assert_equal(2, all_eateries.size())
   end

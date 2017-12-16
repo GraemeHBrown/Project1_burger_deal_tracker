@@ -4,5 +4,5 @@ require_relative('controllers/eateries_controller')
 
 
 get '/' do
-  erb( :index )
+  erb(:index)
 end
