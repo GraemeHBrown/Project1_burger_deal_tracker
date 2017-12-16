@@ -2,7 +2,7 @@
 
 <p>Name: <%= @eatery.name %></p>
 <p>Location: <%= @eatery.location %></p>
-<a href="#">Edit eatery details</a>
+<a href="/eateries/<%= @eatery.id %>/edit">Edit eatery details</a>
 <form class="delete-button" action="/eateries/<%= @eatery.id %>/delete" method="POST">
     <input type="submit" name="delete-button" value="Delete Eatery">
 </form>

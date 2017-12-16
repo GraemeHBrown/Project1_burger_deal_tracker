@@ -35,3 +35,18 @@ post('/eateries')do
   @eatery.save()
   redirect'/eateries'
 end
+
+#edit action
+get('/eateries/:id/edit') do
+  id = params[:id]
+  @eatery = Eatery.find(id)
+  erb :edit
+end
+
+#update
+post('/eateries/:id') do
+  id = params[:id]
+  @eatery = Eatery.new(params)
+  @eatery.update()
+  redirect '/eateries'
+end

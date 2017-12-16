@@ -1,7 +1,9 @@
-<h2>All Eateries</h2>
 <a href="/eateries/new">Create new eatery</a>
+<br>
+<h2>All Eateries</h2>
+<br>
 <% @eateries.each do |eatery| %>
 <p>Name: <%= eatery.name%></p>
 <p>Location: <%= eatery.location%></p>
-
+<a href="/eateries/<%= eatery.id %>">Eatery Details</a>
 <% end %>
