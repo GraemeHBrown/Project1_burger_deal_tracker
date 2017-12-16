@@ -64,5 +64,11 @@ class Eatery
       return Eatery.new(results.first)
     end
 
+    def self.delete_all()
+      sql = "DELETE FROM eateries;"
+      values = []
+      SqlRunner.run(sql, values)
+    end
+
 
   end
