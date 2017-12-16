@@ -9,6 +9,11 @@ get('/eateries') do
   erb :index
 end
 
+#new action
+get('/eateries/new') do
+  erb :new
+end
+
 #show action diplays one eatery in view based on id in URL
 get('/eateries/:id') do
   id = params[:id]
@@ -24,7 +29,9 @@ post('/eateries/:id/delete') do
   redirect'/eateries'
 end
 
-#new action
-get('/eateries/new') do
-  erb :new
+#create action
+post('/eateries')do
+  @eatery = Eatery.new(params)
+  @eatery.save()
+  redirect'/eateries'
 end
