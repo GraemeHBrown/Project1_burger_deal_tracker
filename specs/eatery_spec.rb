@@ -40,7 +40,7 @@ class TestEatery < MiniTest::Test
     assert_equal(name, found_eatery.name)
   end
 
-  #a db method so difficult to test.  Calling find raises an error
+  #a db method so difficult to test well.  Calling find raises an error
   def test_deleting_an_instance()
     @bobs_burgers.delete()
     assert_raises (NoMethodError) {Eatery.find(@bobs_burgers.id)}
