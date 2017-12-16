@@ -1,7 +1,7 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
-require_relative('./models/eatery.rb')
+require_relative('../models/eatery.rb')
 
 #index route to dislay all eateries
 get('/eateries') do
