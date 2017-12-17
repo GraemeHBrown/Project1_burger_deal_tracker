@@ -29,12 +29,34 @@ class Burger
     @id = results.first()['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE burgers
+    SET
+    (
+      name,
+      price,
+      eatery_id
+      ) =
+      (
+        $1, $2, $3
+      )
+      WHERE id = $4"
+      values = [@name, @price, @eatery_id, @id]
+      SqlRunner.run(sql, values)
+    end
+
   def self.find(id)
     sql = "SELECT * FROM burgers
     WHERE id = $1"
     values = [id]
     results = SqlRunner.run(sql, values)
     return Burger.new(results.first)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM burgers;"
+    values = []
+    SqlRunner.run(sql, values)
   end
 
 end

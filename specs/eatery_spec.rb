@@ -4,10 +4,12 @@ require("minitest/reporters")
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative("../models/eatery.rb")
+require_relative("../models/burger.rb")
 
 class TestEatery < MiniTest::Test
 
   def setup
+    Burger.delete_all()
     Eatery.delete_all()
     @bobs_burgers = Eatery.new({'name' => 'Bobs Burgers', 'location' => 'Edinburgh'})
     @bobs_burgers.save()
@@ -31,9 +33,7 @@ class TestEatery < MiniTest::Test
     assert_equal(name_pre_save, found_eatery.name)
   end
 
-  #For documentary purposes.
   def test_all_eateries_returns_eateries_from_db()
-    skip "numbers will change and break test during development."
     all_eateries = Eatery.all()
     assert_equal(2, all_eateries.size())
   end
