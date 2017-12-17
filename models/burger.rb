@@ -52,6 +52,13 @@ class Burger
       SqlRunner.run(sql, values)
     end
 
+    def self.all()
+      sql = "SELECT * FROM burgers;"
+      values = []
+      results = SqlRunner.run(sql, values)
+      return results.map { |burger| Burger.new(burger) }
+    end
+
     def self.find(id)
       sql = "SELECT * FROM burgers
       WHERE id = $1"

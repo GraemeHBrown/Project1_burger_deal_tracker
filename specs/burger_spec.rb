@@ -47,4 +47,9 @@ class TestBurger < MiniTest::Test
     assert_raises (NoMethodError) {Burger.find(@whopper.id)}
   end
 
+  def test_all_burgers_returns_burgers_from_db()
+    all_burgers = Burger.all()
+    assert_equal(1, all_burgers.size())
+  end
+
 end
