@@ -1,1 +1,16 @@
 <h2>Edit burger details...</h2>
+
+<form class="edit-burger" action="/burgers/<%= @burger.id %>" method="POST">
+  <div class="">
+    <label for="name_input">Name:</label>
+    <input id="name_input" type="text" name="name" value="<%= @burger.name %>">
+  </div>
+  <div class="">
+    <label for="price_input">Price:</label>
+    <input id="price_input" type="text" name="price" value="<%= @burger.price %>">
+  </div>
+</div>
+<div class="">
+  <input type="submit" name="" value="Update Burger">
+</div>
+</form>
