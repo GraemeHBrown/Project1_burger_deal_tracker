@@ -30,3 +30,10 @@ post('/burgers/:id/delete') do
   @burger.delete()
   redirect'/burgers'
 end
+
+#edit action
+get('/burgers/:id/edit') do
+  id = params[:id]
+  @burger = Burger.find(id)
+  erb (:"burgers/edit")
+end

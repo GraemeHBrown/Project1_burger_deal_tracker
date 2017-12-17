@@ -2,7 +2,7 @@
 
 <p>Name: <%= @burger.name %></p>
 <p>Price: <%= @burger.price %></p>
-<a href="#">Edit burger details</a>
+<a href="/burgers/<%= @burger.id %>/edit">Edit burger details</a>
 <form class="delete-button" action="/burgers/<%= @burger.id%>/delete" method="POST">
     <input type="submit" name="delete-button" value="Delete Burger">
 </form>
