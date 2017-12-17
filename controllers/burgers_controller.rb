@@ -22,3 +22,11 @@ get('/burgers/:id') do
   @burger = Burger.find(id)
   erb (:"burgers/show")
 end
+
+#delete action deletes one burger based on ID in URL
+post('/burgers/:id/delete') do
+  id = params[:id]
+  @burger = Burger.find(id)
+  @burger.delete()
+  redirect'/burgers'
+end
