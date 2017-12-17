@@ -45,18 +45,25 @@ class Burger
       SqlRunner.run(sql, values)
     end
 
-  def self.find(id)
-    sql = "SELECT * FROM burgers
-    WHERE id = $1"
-    values = [id]
-    results = SqlRunner.run(sql, values)
-    return Burger.new(results.first)
-  end
+    def delete()
+      sql = "DELETE FROM burgers
+      WHERE id = $1"
+      values = [@id]
+      SqlRunner.run(sql, values)
+    end
 
-  def self.delete_all()
-    sql = "DELETE FROM burgers;"
-    values = []
-    SqlRunner.run(sql, values)
-  end
+    def self.find(id)
+      sql = "SELECT * FROM burgers
+      WHERE id = $1"
+      values = [id]
+      results = SqlRunner.run(sql, values)
+      return Burger.new(results.first)
+    end
 
-end
+    def self.delete_all()
+      sql = "DELETE FROM burgers;"
+      values = []
+      SqlRunner.run(sql, values)
+    end
+
+  end

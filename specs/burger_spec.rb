@@ -41,4 +41,10 @@ class TestBurger < MiniTest::Test
     assert_equal(new_name, updated_burger.name)
   end
 
+  #a db method so difficult to test well.  Calling find raises an error
+  def test_deleting_an_instance()
+    @whopper.delete()
+    assert_raises (NoMethodError) {Burger.find(@whopper.id)}
+  end
+
 end
