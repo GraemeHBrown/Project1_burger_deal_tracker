@@ -16,6 +16,10 @@ class TestEatery < MiniTest::Test
     @burgers_r_us = Eatery.new({'name' => 'Burgers R Us', 'location' => 'Edinburgh'})
     @burgers_r_us.save()
     @burger_meats_burger = Eatery.new({'name' => 'Burger Meats Burger', 'location' => 'Edinburgh'})
+    @royale = Burger.new({'name' => 'Royale', 'price' => 17.50, 'eatery_id' => @bobs_burgers.id })
+    @royale.save()
+    @whopper = Burger.new({'name' => 'Whopper', 'price' => 3.50, 'eatery_id' => @bobs_burgers.id })
+    @whopper.save()
   end
 
   def test_eatery_has_name
@@ -50,12 +54,24 @@ class TestEatery < MiniTest::Test
     assert_raises (NoMethodError) {Eatery.find(@bobs_burgers.id)}
   end
 
+  #a db method so difficult to test well.  Calling find raises an error
+  def test_delete_all_returns_error_on_find()
+    Eatery.delete_all()
+    assert_raises (NoMethodError) {Eatery.find(@bobs_burgers.id)}
+    assert_raises (NoMethodError) {Eatery.find(@burgers_r_us.id)}
+  end
+
   def test_updated_instance_shows_changes()
     new_name = 'Burger meats Burger'
     @burgers_r_us.name = new_name
     @burgers_r_us.update()
     updated_eatery = Eatery.find(@burgers_r_us.id)
     assert_equal(updated_eatery.name, new_name)
+  end
+
+  def test_burgers_returns_burgers_for_eatery()
+    found_burgers = @bobs_burgers.burgers()
+    assert_equal(2, found_burgers.size())
   end
 
 

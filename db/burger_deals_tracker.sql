@@ -14,7 +14,7 @@ CREATE TABLE burgers
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255) not null,
   price NUMERIC,
-  eatery_id INT8 REFERENCES eateries(id)
+  eatery_id INT8 REFERENCES eateries(id) ON DELETE CASCADE
 );
 
 CREATE TABLE deals
