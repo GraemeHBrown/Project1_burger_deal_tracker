@@ -13,8 +13,12 @@ class TestBurger < MiniTest::Test
     Eatery.delete_all()
     @burger_meats_burger = Eatery.new({'name' => 'Burger Meats Burger', 'location' => 'Edinburgh'})
     @burger_meats_burger.save()
+    @mcdonalds = Eatery.new({'name' => 'McDs', 'location' => 'Edinburgh'})
+    @mcdonalds.save()
     @whopper = Burger.new({'name' => 'Whopper', 'price' => 3.50, 'eatery_id' => @burger_meats_burger.id })
     @whopper.save()
+    @big_mac = Burger.new({'name' => 'Big Mac', 'price' => 2.50, 'eatery_id' => @mcdonalds.id })
+    @big_mac.save()
     @royale = Burger.new({'name' => 'Royale', 'price' => 17.50, 'eatery_id' => @burger_meats_burger.id })
   end
 
@@ -47,9 +51,16 @@ class TestBurger < MiniTest::Test
     assert_raises (NoMethodError) {Burger.find(@whopper.id)}
   end
 
+  #a db method so difficult to test well.  Calling find raises an error
+  def test_delete_all_returns_error_on_find()
+    Burger.delete_all()
+    assert_raises (NoMethodError) {Burger.find(@whopper.id)}
+    assert_raises (NoMethodError) {Burger.find(@mcdonalds.id)}
+  end
+
   def test_all_burgers_returns_burgers_from_db()
     all_burgers = Burger.all()
-    assert_equal(1, all_burgers.size())
+    assert_equal(2, all_burgers.size())
   end
 
 end
