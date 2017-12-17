@@ -55,7 +55,7 @@ class TestBurger < MiniTest::Test
   def test_delete_all_returns_error_on_find()
     Burger.delete_all()
     assert_raises (NoMethodError) {Burger.find(@whopper.id)}
-    assert_raises (NoMethodError) {Burger.find(@mcdonalds.id)}
+    assert_raises (NoMethodError) {Burger.find(@big_mac.id)}
   end
 
   def test_all_burgers_returns_burgers_from_db()

@@ -1,0 +1,26 @@
+
+<h2>All Burgers</h2>
+<br>
+
+<form action="/burgers">
+  <label>
+    Select an eatery:
+    <select name="eatery_id">
+      <% for eatery in @eateries %>
+      <option value="<%= eatery.id %>"><%= eatery.name %></option>
+      <% end %>
+    </select>
+  </label>
+
+  <input class="btn btn--action" type='submit' value="Select eatery">
+</form>
+
+<% unless @burgers.empty? %>
+  <h3>Menu for:  <%= @eatery.name  %></h3>
+
+  <% @burgers.each do |burger| %>
+    <p>Name: <%= burger.name%></p>
+    <p>Price: <%= burger.price%></p>
+    <a href="#">Burger Details</a>
+  <% end %>
+<% end %>
