@@ -21,6 +21,6 @@
   <% @burgers.each do |burger| %>
     <p>Name: <%= burger.name%></p>
     <p>Price: <%= burger.price%></p>
-    <a href="#">Burger Details</a>
+    <a href="/burgers/<%= burger.id %>">Burger Details</a>
   <% end %>
 <% end %>

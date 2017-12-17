@@ -15,3 +15,10 @@ get('/burgers') do
   end
   erb (:"burgers/index")
 end
+
+#show action diplays one burger in view based on id in URL
+get('/burgers/:id') do
+  id = params[:id]
+  @burger = Burger.find(id)
+  erb (:"burgers/show")
+end
