@@ -20,7 +20,7 @@ CREATE TABLE burgers
 CREATE TABLE deals
 (
   id SERIAL8 PRIMARY KEY,
-  deal_name VARCHAR(255),
+  deal_name VARCHAR(255) not null,
   day VARCHAR(255),
-  burger_id INT8 REFERENCES burgers(id)
+  burger_id INT8 REFERENCES burgers(id) ON DELETE CASCADE
 );
