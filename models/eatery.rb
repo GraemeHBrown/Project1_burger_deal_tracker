@@ -56,6 +56,15 @@ class Eatery
       return results.map { |burger| Burger.new(burger) }
     end
 
+    def deals()
+      sql = "SELECT deals.* FROM deals
+      INNER JOIN burgers ON burgers.id = deals.burger_id
+      WHERE burgers.eatery_id = $1;"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      return results.map{ |deal| Deal.new(deal)}
+    end
+
     def self.all()
       sql = "SELECT * FROM eateries;"
       values = []

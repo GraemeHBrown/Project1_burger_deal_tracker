@@ -10,9 +10,9 @@ require_relative("../models/deal.rb")
 class TestDeals < MiniTest::Test
 
   def setup
+    Deal.delete_all()
     Burger.delete_all()
     Eatery.delete_all()
-    Deal.delete_all()
     @bobs_burgers = Eatery.new({'name' => 'Bobs Burgers', 'location' => 'Edinburgh'})
     @bobs_burgers.save()
     @burgers_r_us = Eatery.new({'name' => 'Burgers R Us', 'location' => 'Edinburgh'})

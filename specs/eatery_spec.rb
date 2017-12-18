@@ -5,10 +5,12 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative("../models/eatery.rb")
 require_relative("../models/burger.rb")
+require_relative("../models/deal.rb")
 
 class TestEatery < MiniTest::Test
 
   def setup
+    Deal.delete_all()
     Burger.delete_all()
     Eatery.delete_all()
     @bobs_burgers = Eatery.new({'name' => 'Bobs Burgers', 'location' => 'Edinburgh'})
@@ -20,6 +22,8 @@ class TestEatery < MiniTest::Test
     @royale.save()
     @whopper = Burger.new({'name' => 'Whopper', 'price' => 3.50, 'eatery_id' => @bobs_burgers.id })
     @whopper.save()
+    @two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => @royale.id })
+    @two_for_one.save()
   end
 
   def test_eatery_has_name
@@ -72,6 +76,11 @@ class TestEatery < MiniTest::Test
   def test_burgers_returns_burgers_for_eatery()
     found_burgers = @bobs_burgers.burgers()
     assert_equal(2, found_burgers.size())
+  end
+
+  def test_deals_returns_deals_for_eatery()
+    found_deals = @bobs_burgers.deals()
+    assert_equal(1, found_deals.size())
   end
 
 
