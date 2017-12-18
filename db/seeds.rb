@@ -5,6 +5,7 @@ require_relative('../models/burger.rb')
 ###Delete
 Burger.delete_all()
 Eatery.delete_all()
+Deal.delete_all()
 
 ###Eateries
 bobs_burgers = Eatery.new({'name' => 'Bobs Burgers', 'location' => 'Edinburgh'})
@@ -29,3 +30,8 @@ big_mac.save()
 
 royale = Burger.new({'name' => 'Royale', 'price' => 17.50, 'eatery_id' => burger_meats_burger.id })
 royale.save()
+
+###Deals data
+
+two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => royale.id })
+two_for_one.save()
