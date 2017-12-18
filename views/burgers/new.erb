@@ -1,0 +1,15 @@
+<h2>Add a new burger</h2>
+
+<form class="new-burger-form" action="/burgers" method="POST">
+  <div class="">
+    <label for="name_input">Burger name:</label>
+    <input id="name_input" type="text" name="name" value="">
+  </div>
+  <div class="">
+    <label for="price_input">price:</label>
+    <input id="price_input" type="text" name="price" value="">
+  </div>
+  <input type="hidden" name="eatery_id" value="<%= @eatery_id %>">
+  <input type="submit" name="" value="Create burger">
+
+</form>

@@ -23,4 +23,10 @@
     <p>Price: <%= burger.price%></p>
     <a href="/burgers/<%= burger.id %>">Burger Details</a>
   <% end %>
+  <br>
+  <hr>
+  <form class="create-button" action="/burgers/new">
+    <input type="hidden" name="eatery_id" value="<%=@eatery.id%>">
+      <input type="submit" name="" value="Add New Burger">
+  </form>
 <% end %>

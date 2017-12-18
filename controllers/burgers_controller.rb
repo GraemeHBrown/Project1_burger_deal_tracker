@@ -18,6 +18,7 @@ end
 
 #new action
 get('/burgers/new') do
+  @eatery_id = params[:eatery_id]
   erb (:"burgers/new")
 end
 
@@ -33,6 +34,13 @@ post('/burgers/:id/delete') do
   id = params[:id]
   @burger = Burger.find(id)
   @burger.delete()
+  redirect'/burgers'
+end
+
+#create action
+post('/burgers')do
+  @burger = Burger.new(params)
+  @burger.save()
   redirect'/burgers'
 end
 
