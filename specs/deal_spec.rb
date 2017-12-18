@@ -22,12 +22,12 @@ class TestDeals < MiniTest::Test
     @whopper = Burger.new({'name' => 'Whopper', 'price' => 3.50, 'eatery_id' => @bobs_burgers.id })
     @whopper.save()
     @two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => @royale.id })
-    @two_for_one.save()
+    # @two_for_one.save()
   end
 
 
   def test_deal_has_name()
-    assert_equal('Two for one', @two_for_one.name)
+    assert_equal('Two for one', @two_for_one.deal_name)
   end
 
 end
