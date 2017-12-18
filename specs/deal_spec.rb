@@ -71,4 +71,8 @@ class TestDeals < MiniTest::Test
     assert_equal(2, all_deals.size())
   end
 
+  def test_burger_return_burger_details_for_deal()
+    assert_equal('Royale', @two_for_one.burger().name())
+  end
+
 end

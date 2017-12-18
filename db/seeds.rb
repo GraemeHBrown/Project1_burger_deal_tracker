@@ -36,3 +36,6 @@ royale.save()
 
 two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => royale.id })
 two_for_one.save()
+
+two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => whopper.id })
+two_for_one.save()
