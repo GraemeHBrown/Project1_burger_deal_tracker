@@ -32,10 +32,13 @@ big_mac.save()
 royale = Burger.new({'name' => 'Royale', 'price' => 17.50, 'eatery_id' => burger_meats_burger.id })
 royale.save()
 
+blt_burger = Burger.new({'name' => 'BLT Burger', 'price' => 5.50, 'eatery_id' => burger_meats_burger.id })
+blt_burger.save()
+
 ###Deals data
 
-two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => royale.id })
-two_for_one.save()
+two_for_one_tuesday = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => royale.id })
+two_for_one_tuesday.save()
 
-two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => whopper.id })
-two_for_one.save()
+two_for_one_thursday = Deal.new({'deal_name' => 'Two for one', 'day' => 'Thursday', 'burger_id' => whopper.id })
+two_for_one_thursday.save()

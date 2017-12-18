@@ -19,7 +19,7 @@
   <h3>Deals for:  <%= @eatery.name  %></h3>
 
   <% @deals.each do |deal| %>
-    <p>A '<%= deal.deal_name%>' details is available on a <%= deal.burger.name%> burger
+    <p>A '<%= deal.deal_name%>' deal is available on a <%= deal.burger.name%> burger
     on <%= deal.day%></p>
 
     <a href="#">Deal Details</a>
