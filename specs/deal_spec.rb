@@ -43,4 +43,32 @@ class TestDeals < MiniTest::Test
     assert_equal(deal_name_pre_save, found_deal.deal_name)
   end
 
+  def test_updated_instance_shows_changes()
+    new_deal_name = 'Two for one Tuesday!'
+    @two_for_one.deal_name = new_deal_name
+    @two_for_one.update()
+    updated_deal = Deal.find(@two_for_one.id)
+    assert_equal(new_deal_name, updated_deal.deal_name)
+  end
+
+  def test_deleting_an_instance()
+    @two_for_one.delete()
+    assert_raises (NoMethodError) {Deal.find(@two_for_one.id)}
+  end
+
+  #a db method so difficult to test well.  Calling find raises an error
+  def test_delete_all_returns_error_on_find()
+    @twenty_five_percent_off.save()
+    Deal.delete_all()
+    assert_raises (NoMethodError) {Deal.find(@two_for_one.id)}
+    assert_raises (NoMethodError) {Deal.find(@twenty_five_percent_off.id)}
+  end
+
+  def test_all_deals_returns_deals_from_db()
+    #saving twenty_five_percent_off to db before as its not saved in setup
+    @twenty_five_percent_off.save()
+    all_deals = Deal.all()
+    assert_equal(2, all_deals.size())
+  end
+
 end

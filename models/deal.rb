@@ -29,6 +29,29 @@ def save()
   @id = results.first()['id'].to_i
 end
 
+def update()
+  sql = "UPDATE deals
+  SET
+  (
+    deal_name,
+    day,
+    burger_id
+    ) =
+    (
+      $1, $2, $3
+    )
+    WHERE id = $4"
+    values = [@deal_name, @day, @burger_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete()
+    sql = "DELETE FROM deals
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
 def self.delete_all()
   sql = "DELETE FROM deals;"
   values = []
@@ -41,6 +64,13 @@ def self.find(id)
   values = [id]
   results = SqlRunner.run(sql, values)
   return Deal.new(results.first)
+end
+
+def self.all()
+  sql = "SELECT * FROM deals;"
+  values = []
+  results = SqlRunner.run(sql, values)
+  return results.map { |deal| Deal.new(deal) }
 end
 
 end
