@@ -25,4 +25,24 @@
   --        WHERE a.deal_name = b.deal_name
   --        AND a.day=b.day)>1);
 
-SELECT burgers.* FROM burgers INNER JOIN burgers_deals ON burgers_deals.burger_id = burgers.id WHERE burgers_deals.deal_id = 7;
+-- SELECT burgers.* FROM burgers INNER JOIN burgers_deals ON burgers_deals.burger_id = burgers.id WHERE burgers_deals.deal_id = 7;
+
+-- deals burgers
+
+-- SELECT burgers.* FROM burgers
+-- INNER JOIN burgers_deals ON burgers_deals.burger_id = burgers.id
+-- WHERE burgers_deals.deal_id = 223;
+--
+-- -- eateries burgers
+-- SELECT * FROM burgers WHERE eatery_id = 341;
+
+SELECT * FROM burgers WHERE id NOT IN (
+  SELECT burgers.id FROM burgers
+  INNER JOIN burgers_deals ON burgers_deals.burger_id = burgers.id
+  WHERE burgers_deals.deal_id = 223
+) AND eatery_id = 341;
+
+SELECT * FROM burgers WHERE id NOT IN (
+  SELECT burger_id FROM burgers_deals
+  WHERE deal_id = 223
+) AND eatery_id = 341;

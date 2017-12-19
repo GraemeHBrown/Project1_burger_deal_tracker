@@ -63,6 +63,23 @@ class Deal
       return results.map{|burger| Burger.new(burger)}
     end
 
+    def eatery()
+      sql = "SELECT * FROM eateries WHERE id = $1;"
+      values = [@eatery_id]
+      results = SqlRunner.run(sql, values)
+      return Eatery.new(results.first)
+    end
+
+    def find_burgers_to_add()
+      sql = "SELECT * FROM burgers WHERE id NOT IN (
+        SELECT burger_id FROM burgers_deals
+        WHERE deal_id = $1
+      ) AND eatery_id = $2"
+      values = [@id, @eatery_id]
+      results = SqlRunner.run(sql, values)
+      return results.map{|burger| Burger.new(burger)}
+    end
+
     def self.delete_all()
       sql = "DELETE FROM deals;"
       values = []
@@ -84,11 +101,9 @@ class Deal
       return results.map { |deal| Deal.new(deal) }
     end
 
-    def eatery()
-      sql = "SELECT * FROM eateries WHERE id = $1;"
-      values = [@eatery_id]
-      results = SqlRunner.run(sql, values)
-      return Eatery.new(results.first)
+    #deals order by day
+    def self.all_deals_by_day()
+
     end
 
   end

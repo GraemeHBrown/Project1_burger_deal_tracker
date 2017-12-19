@@ -12,7 +12,7 @@
     <label for="burger_id_select">
       Select a burger:
       <select id="burger_id_select"class="" name="burger_id">
-        <% for burger in @all_eatery_burgers %>
+        <% for burger in @burgers_to_add %>
         <option value="<%= burger.id %>"><%= burger.name %></option>
         <% end %>
       </select>

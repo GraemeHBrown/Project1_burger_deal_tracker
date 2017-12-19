@@ -73,7 +73,7 @@ get('/deals/:id/add_burger') do
   id = params[:id]
   @deal = Deal.find(id)
   @eatery = @deal.eatery()
-  @all_eatery_burgers = @eatery.burgers()
+  @burgers_to_add = @deal.find_burgers_to_add()
   erb (:"deals/add_burger")
 end
 
