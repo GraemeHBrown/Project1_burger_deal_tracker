@@ -4,13 +4,13 @@ require_relative('./burger.rb')
 class Deal
 
   attr_reader :id
-  attr_accessor :deal_name, :day, :burger_id
+  attr_accessor :deal_name, :day, :eatery_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @deal_name = options['deal_name']
     @day = options['day']
-    @burger_id = options['burger_id']
+    @eatery_id = options['eatery_id']
   end
 
   def save()
@@ -18,14 +18,14 @@ class Deal
     (
       deal_name,
       day,
-      burger_id
+      eatery_id
     )
     VALUES
     (
       $1, $2, $3
     )
     RETURNING id"
-    values = [@deal_name, @day, @burger_id]
+    values = [@deal_name, @day, @eatery_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -36,13 +36,13 @@ class Deal
     (
       deal_name,
       day,
-      burger_id
+      eatery_id
       ) =
       (
         $1, $2, $3
       )
       WHERE id = $4"
-      values = [@deal_name, @day, @burger_id, @id]
+      values = [@deal_name, @day, @eatery_id, @id]
       SqlRunner.run(sql, values)
     end
 
@@ -53,12 +53,13 @@ class Deal
       SqlRunner.run(sql, values)
     end
 
-    def burger()
-      sql = "SELECT * FROM burgers
-      WHERE id = $1;"
-      values = [@burger_id]
+    def burgers()
+      sql = "SELECT burgers.* FROM burgers
+      INNER JOIN burgers_deals ON burgers_deals.burger_id = burgers.id
+      WHERE burgers_deals.deal_id = $1;"
+      values = [@id]
       results = SqlRunner.run(sql, values)
-      return Burger.new(results.first)
+      return results.map{|burger| Burger.new(burger)}
     end
 
     def self.delete_all()

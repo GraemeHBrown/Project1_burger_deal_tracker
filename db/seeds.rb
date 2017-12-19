@@ -2,6 +2,7 @@ require('pry-byebug')
 require_relative('../models/eatery.rb')
 require_relative('../models/burger.rb')
 require_relative('../models/deal.rb')
+require_relative('../models/burger_deal.rb')
 
 ###Delete
 Burger.delete_all()
@@ -37,8 +38,15 @@ blt_burger.save()
 
 ###Deals data
 
-two_for_one_tuesday = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => royale.id })
+two_for_one_tuesday = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'eatery_id' => burger_meats_burger.id })
 two_for_one_tuesday.save()
 
-two_for_one_thursday = Deal.new({'deal_name' => 'Two for one', 'day' => 'Thursday', 'burger_id' => whopper.id })
+two_for_one_thursday = Deal.new({'deal_name' => 'Two for one', 'day' => 'Thursday', 'eatery_id' => burger_meats_burger.id })
 two_for_one_thursday.save()
+
+twenty_five_percent_off = Deal.new({'deal_name' => '25% off', 'day' => 'Friday', 'eatery_id' => bobs_burgers.id })
+twenty_five_percent_off.save()
+
+### burgers_deals
+two_for_one_royale = BurgerDeal.new({'deal_id' => two_for_one_tuesday.id, 'burger_id' => royale.id})
+two_for_one_royale.save()

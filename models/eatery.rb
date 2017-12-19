@@ -1,5 +1,6 @@
 require_relative('../db/sql_runner.rb')
 require_relative('./deal.rb')
+require( 'pry-byebug' )
 
 class Eatery
 
@@ -58,9 +59,8 @@ class Eatery
     end
 
     def deals()
-      sql = "SELECT deals.* FROM deals
-      INNER JOIN burgers ON burgers.id = deals.burger_id
-      WHERE burgers.eatery_id = $1;"
+      sql = "SELECT * FROM deals
+      WHERE eatery_id = $1;"
       values = [@id]
       results = SqlRunner.run(sql, values)
       return results.map{ |deal| Deal.new(deal)}

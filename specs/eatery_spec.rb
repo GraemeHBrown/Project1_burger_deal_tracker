@@ -22,7 +22,7 @@ class TestEatery < MiniTest::Test
     @royale.save()
     @whopper = Burger.new({'name' => 'Whopper', 'price' => 3.50, 'eatery_id' => @bobs_burgers.id })
     @whopper.save()
-    @two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => @royale.id })
+    @two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'eatery_id' => @bobs_burgers.id })
     @two_for_one.save()
   end
 

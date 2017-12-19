@@ -6,10 +6,12 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative("../models/burger.rb")
 require_relative("../models/eatery.rb")
 require_relative("../models/deal.rb")
+require_relative("../models/burger_deal.rb")
 
 class TestDeals < MiniTest::Test
 
   def setup
+    BurgerDeal.delete_all()
     Deal.delete_all()
     Burger.delete_all()
     Eatery.delete_all()
@@ -21,10 +23,12 @@ class TestDeals < MiniTest::Test
     @royale.save()
     @whopper = Burger.new({'name' => 'Whopper', 'price' => 3.50, 'eatery_id' => @bobs_burgers.id })
     @whopper.save()
-    @two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'burger_id' => @royale.id })
+    @two_for_one = Deal.new({'deal_name' => 'Two for one', 'day' => 'Tuesday', 'eatery_id' => @bobs_burgers.id })
     @two_for_one.save()
     @twenty_five_percent_off = Deal.new({'deal_name' => '25% off',
-      'day' => 'Friday', 'burger_id' => @whopper.id })
+      'day' => 'Friday', 'eatery_id' => @burgers_r_us.id })
+    @two_for_one_royale = BurgerDeal.new({'deal_id' => @two_for_one.id, 'burger_id' => @royale.id})
+    @two_for_one_royale.save()
   end
 
 
@@ -71,8 +75,13 @@ class TestDeals < MiniTest::Test
     assert_equal(2, all_deals.size())
   end
 
-  def test_burger_return_burger_details_for_deal()
-    assert_equal('Royale', @two_for_one.burger().name())
+  def test_burgers_returns_burgers_for_the_deal()
+    assert_equal(1, @two_for_one.burgers().size)
+  end
+
+  def test_burgers_returns_burger_with_details()
+    found_burger = @two_for_one.burgers().first
+    assert_equal('Royale', found_burger.name)
   end
 
 end
