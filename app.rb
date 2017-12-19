@@ -5,6 +5,8 @@ require_relative('controllers/burgers_controller')
 require_relative('controllers/deals_controller')
 require_relative('controllers/search_controller')
 
+enable :sessions
+
 get '/' do
   erb(:index)
 end

@@ -3,8 +3,11 @@ require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 require_relative('../models/eatery.rb')
 
+enable :sessions
+
 #index route to dislay all eateries
 get('/eateries') do
+  @message = session.delete(:message)
   @eateries = Eatery.all()
   erb (:"eateries/index")
 end
@@ -26,6 +29,7 @@ post('/eateries/:id/delete') do
   id = params[:id]
   @eatery = Eatery.find(id)
   @eatery.delete()
+  session[:message] = "Successfully deleted the eatery named: #{@eatery.name}."
   redirect'/eateries'
 end
 

@@ -1,5 +1,7 @@
 <h2>Eatery Details</h2>
-
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
 <p>Name: <%= @eatery.name %></p>
 <p>Location: <%= @eatery.location %></p>
 <a href="/eateries/<%= @eatery.id %>/edit">Edit eatery details</a>

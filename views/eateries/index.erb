@@ -2,6 +2,10 @@
 <br>
 <h2>All Eateries</h2>
 <br>
+
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
 <% @eateries.each do |eatery| %>
 <p>Name: <%= eatery.name%></p>
 <p>Location: <%= eatery.location%></p>
