@@ -1,0 +1,23 @@
+<h2>Add a new deal</h2>
+
+<form class="new-deal-form" action="/deals" method="POST">
+  <div class="">
+    <label for="deal_name_input">Deal name:</label>
+    <input id="deal_name_input" type="text" name="deal_name" value="">
+  </div>
+  <div class="">
+    Select a day:
+    <select name="day">
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+      <option value="Sunday">Sunday</option>
+    </select>
+  </div>
+  <input type="hidden" name="eatery_id" value="<%= @eatery_id %>">
+  <input type="submit" name="" value="Create deal">
+
+</form>

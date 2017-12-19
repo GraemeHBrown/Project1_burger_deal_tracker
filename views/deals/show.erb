@@ -3,6 +3,7 @@
 <p>Deal name: <%= @deal.deal_name %></p>
 <p>Day available: <%= @deal.day %></p>
 <a href="/deals/<%= @deal.id %>/edit">Edit deal details</a>
+<a href="/deals/<%= @deal.id %>/add_burger">Add burger to deal</a>
 <form class="delete-button" action="/deals/<%= @deal.id %>/delete" method="POST">
     <input type="submit" name="delete-button" value="Delete Deal">
 </form>

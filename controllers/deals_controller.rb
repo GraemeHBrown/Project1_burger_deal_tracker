@@ -16,6 +16,12 @@ get('/deals') do
   erb (:"deals/index")
 end
 
+#new action
+get('/deals/new') do
+  @eatery_id = params[:eatery_id]
+  erb (:"deals/new")
+end
+
 #show action diplays one deal in view based on id in URL
 get('/deals/:id') do
   id = params[:id]
@@ -28,6 +34,13 @@ get('/deals/:id/edit') do
   id = params[:id]
   @deal = Deal.find(id)
   erb (:"deals/edit")
+end
+
+#create action
+post('/deals')do
+  @deal = Deal.new(params)
+  @deal.save()
+  redirect'/deals'
 end
 
 #update action
@@ -47,3 +60,5 @@ post('/deals/:id/delete') do
   @deal.delete()
   redirect'/deals'
 end
+
+#add burger to deal
