@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 require_relative('../models/burger.rb')
 require_relative('../models/eatery.rb')
+require_relative('../models/burger_deal.rb')
 
 #index route to dislay all deals for an eatery
 get('/deals') do
@@ -38,9 +39,15 @@ end
 
 #create action
 post('/deals')do
-  @deal = Deal.new(params)
-  @deal.save()
-  redirect'/deals'
+@deal = Deal.new(params)
+@deal.save()
+redirect'/deals'
+end
+
+post('/deals/add_burger') do
+  @burger_deal = BurgerDeal.new(params)
+  @burger_deal.save()
+  redirect '/deals'
 end
 
 #update action
@@ -59,4 +66,19 @@ post('/deals/:id/delete') do
   @deal = Deal.find(id)
   @deal.delete()
   redirect'/deals'
+end
+
+#add burger to deal
+get('/deals/:id/add_burger') do
+  id = params[:id]
+  @deal = Deal.find(id)
+  @eatery = @deal.eatery()
+  @all_eatery_burgers = @eatery.burgers()
+  erb (:"deals/add_burger")
+end
+
+post('/deals/add_burger') do
+  @burger_deal = BurgerDeal.new(params)
+  @burger_deal.save()
+  redirect '/deals'
 end

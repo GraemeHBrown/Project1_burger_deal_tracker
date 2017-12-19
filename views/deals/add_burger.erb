@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Add Burger to Deal</title>
+</head>
+<body>
+  <h2>Add a burger to a deal</h2>
+  <p>Eatery name: <%= @eatery.name %> </p>
+  <form class="" action="/deals/add_burger" method="POST">
+
+    <label for="burger_id_select">
+      Select a burger:
+      <select id="burger_id_select"class="" name="burger_id">
+        <% for burger in @all_eatery_burgers %>
+        <option value="<%= burger.id %>"><%= burger.name %></option>
+        <% end %>
+      </select>
+    </label>
+    <div class="">
+      <input type="hidden" name="deal_id" value="<%= @deal.id %>">
+      <input type="submit" name="" value="Add burger to deal">
+    </div>
+  </form>
+</body>
+</html>
