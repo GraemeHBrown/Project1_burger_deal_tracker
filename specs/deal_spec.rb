@@ -84,4 +84,9 @@ class TestDeals < MiniTest::Test
     assert_equal('Royale', found_burger.name)
   end
 
+  def test_eatery_returns_the_eatery_for_the_deal()
+    found_eatery = @two_for_one.eatery()
+    assert_equal('Bobs Burgers', found_eatery.name)
+  end
+
 end
