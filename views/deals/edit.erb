@@ -5,9 +5,19 @@
     <label for="deal_name_input">Deal name:</label>
     <input id="deal_name_input" type="text" name="deal_name" value="<%= @deal.deal_name %>">
   </div>
+<!-- needs dynamic drop down -->
+<label for="topping_select">Topping: </label>
   <div class="">
     <label for="day_input">Day:</label>
-    <input id="day_input" type="text" name="day" value="<%= @deal.day %>">
+    <select id="day_select" class="" name="day">
+      <option value="Monday" <%= "selected" if @deal.day == "Monday" %> >Monday</option>
+      <option value="Tuesday" <%= "selected" if @deal.day == "Tuesday" %> >Tuesday</option>
+      <option value="Wednesday" <%= "selected" if @deal.day == "Wednesday" %> >Wednesday</option>
+      <option value="Thursday" <%= "selected" if @deal.day == "Thursday" %> >Thursday</option>
+      <option value="Friday" <%= "selected" if @deal.day == "Friday" %> >Friday</option>
+      <option value="Saturday" <%= "selected" if @deal.day == "Saturday" %> >Saturday</option>
+      <option value="Sunday" <%= "selected" if @deal.day == "Sunday" %> >Sunday</option>
+    </select>
   </div>
 </div>
 <div class="">

@@ -60,5 +60,3 @@ post('/deals/:id/delete') do
   @deal.delete()
   redirect'/deals'
 end
-
-#add burger to deal
