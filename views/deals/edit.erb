@@ -1,0 +1,16 @@
+<h2>Edit Deal Details</h2>
+
+<form class="edit-deal" action="/deals/<%= @deal.id %>" method="POST">
+  <div class="">
+    <label for="deal_name_input">Deal name:</label>
+    <input id="deal_name_input" type="text" name="deal_name" value="<%= @deal.deal_name %>">
+  </div>
+  <div class="">
+    <label for="day_input">Day:</label>
+    <input id="day_input" type="text" name="day" value="<%= @deal.day %>">
+  </div>
+</div>
+<div class="">
+  <input type="submit" name="" value="Update Deal">
+</div>
+</form>
