@@ -3,9 +3,11 @@
 <h2>All Eateries</h2>
 <br>
 
-<% if @message %>
-  <p><%= @message %></p>
-<% end %>
+<div class="session-message">
+  <% if @message %>
+    <p><%= @message %></p>
+  <% end %>
+</div>
 <% @eateries.each do |eatery| %>
 <p>Name: <%= eatery.name%></p>
 <p>Location: <%= eatery.location%></p>
