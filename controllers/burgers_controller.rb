@@ -4,8 +4,11 @@ require( 'pry-byebug' )
 require_relative('../models/burger.rb')
 require_relative('../models/eatery.rb')
 
+enable :sessions
+
 #index route to dislay all burgers
 get('/burgers') do
+  @message = session.delete(:message)
   @eateries = Eatery.all()
   @burgers = []
   if params[:eatery_id]
@@ -34,6 +37,7 @@ post('/burgers/:id/delete') do
   id = params[:id]
   @burger = Burger.find(id)
   @burger.delete()
+  session[:message] = "Successfully deleted the burger named: #{@burger.name}."
   redirect'/burgers'
 end
 
@@ -41,6 +45,7 @@ end
 post('/burgers')do
   @burger = Burger.new(params)
   @burger.save()
+  session[:message] = "Successfully created the burger named: #{@burger.name}."
   redirect'/burgers'
 end
 
@@ -58,5 +63,6 @@ post('/burgers/:id') do
   params[:eatery_id] = burger.eatery_id
   @updated_burger = Burger.new(params)
   @updated_burger.update()
+  session[:message] = "Successfully updated the burger named: #{@updated_burger.name}."
   redirect '/burgers'
 end

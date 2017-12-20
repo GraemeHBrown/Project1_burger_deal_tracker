@@ -1,5 +1,11 @@
 <h2>Add a new eatery</h2>
 
+<div class="session-message">
+  <% if @message %>
+    <p><%= @message %></p>
+  <% end %>
+</div>
+
 <form class="new-eatery-form" action="/eateries" method="POST">
   <div class="">
     <label for="name_input">Eatery name:</label>

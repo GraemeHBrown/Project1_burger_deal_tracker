@@ -14,6 +14,7 @@ end
 
 #new action
 get('/eateries/new') do
+  @message = session.delete(:message)
   erb (:"eateries/new")
 end
 
@@ -35,9 +36,16 @@ end
 
 #create action
 post('/eateries')do
-  @eatery = Eatery.new(params)
-  @eatery.save()
-  redirect'/eateries'
+  @name = params['name']
+  if @name.nil? || @name.empty?
+      session[:message] = "You need to enter an eatery name to create a new eatery."
+      redirect'/eateries/new'
+  else
+    @eatery = Eatery.new(params)
+    @eatery.save()
+    session[:message] = "Successfully created the eatery named: #{@eatery.name}."
+    redirect'/eateries'
+  end
 end
 
 #edit action
@@ -52,5 +60,6 @@ post('/eateries/:id') do
   id = params[:id]
   @eatery = Eatery.new(params)
   @eatery.update()
+  session[:message] = "Successfully updated the eatery named: #{@eatery.name}."
   redirect '/eateries'
 end
