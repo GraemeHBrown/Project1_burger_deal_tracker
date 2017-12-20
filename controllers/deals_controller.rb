@@ -22,6 +22,7 @@ end
 
 #new action
 get('/deals/new') do
+  @message = session.delete(:message)
   @eatery_id = params[:eatery_id]
   erb (:"deals/new")
 end
@@ -42,10 +43,10 @@ end
 
 #create action
 post('/deals')do
-@deal = Deal.new(params)
-@deal.save()
-session[:message] = "Successfully created the deal named: #{@deal.deal_name}."
-redirect'/deals'
+    @deal = Deal.new(params)
+    @deal.save()
+    session[:message] = "Successfully created the deal named: #{@deal.deal_name}."
+    redirect'/deals'
 end
 
 post('/deals/add_burger') do

@@ -20,16 +20,22 @@
   <input class="btn btn--action" type='submit' value="Select eatery">
 </form>
 
-<% unless @burgers.empty? %>
-  <h3>Menu for:  <%= @eatery.name  %></h3>
+<% unless @eatery ==nil %>
+  <h3>Eatery name: <%= @eatery.name %></h3>
+    <% if @burgers.empty? %>
+      <h3>No burgers listed for this eatery</h3>
+    <% end %>
+  <% unless @burgers.empty? %>
+    <h3>Menu for:  <%= @eatery.name  %></h3>
 
-  <% @burgers.each do |burger| %>
-    <p>Name: <%= burger.name%></p>
-    <p>Price: <%= burger.price%></p>
-    <a href="/burgers/<%= burger.id %>">Burger Details</a>
+    <% @burgers.each do |burger| %>
+      <p>Name: <%= burger.name%></p>
+      <p>Price: <%= burger.price%></p>
+      <a href="/burgers/<%= burger.id %>">Burger Details</a>
+    <% end %>
+    <br>
+    <hr>
   <% end %>
-  <br>
-  <hr>
   <form class="create-button" action="/burgers/new">
     <input type="hidden" name="eatery_id" value="<%=@eatery.id%>">
       <input type="submit" name="" value="Add New Burger">
