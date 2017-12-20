@@ -39,13 +39,32 @@
 -- -- eateries burgers
 -- SELECT * FROM burgers WHERE eatery_id = 341;
 
-SELECT * FROM burgers WHERE id NOT IN (
-  SELECT burgers.id FROM burgers
-  INNER JOIN burgers_deals ON burgers_deals.burger_id = burgers.id
-  WHERE burgers_deals.deal_id = 223
-) AND eatery_id = 341;
+-- SELECT * FROM burgers WHERE id NOT IN (
+--   SELECT burgers.id FROM burgers
+--   INNER JOIN burgers_deals ON burgers_deals.burger_id = burgers.id
+--   WHERE burgers_deals.deal_id = 223
+-- ) AND eatery_id = 341;
+--
+-- SELECT * FROM burgers WHERE id NOT IN (
+--   SELECT burger_id FROM burgers_deals
+--   WHERE deal_id = 223
+-- ) AND eatery_id = 341;
 
-SELECT * FROM burgers WHERE id NOT IN (
-  SELECT burger_id FROM burgers_deals
-  WHERE deal_id = 223
-) AND eatery_id = 341;
+SELECT * FROM deals
+ORDER BY
+     CASE
+          WHEN Day = 'Sunday' THEN 1
+          WHEN Day = 'Monday' THEN 2
+          WHEN Day = 'Tuesday' THEN 3
+          WHEN Day = 'Wednesday' THEN 4
+          WHEN Day = 'Thursday' THEN 5
+          WHEN Day = 'Friday' THEN 6
+          WHEN Day = 'Saturday' THEN 7
+     END ASC;
+
+-- select distinct day, deal_name from deals;
+
+SELECT distinct day, deal_name
+FROM deals
+GROUP BY day
+;

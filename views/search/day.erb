@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/search.css">
+    <title>Search for deals by an individual day</title>
+  </head>
+  <body>
+    <h3> Search by day </h3>
+
+    <form action="/search/day">
+      <label>
+        Select a day to see the deals:
+          <select name="day">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+      </label>
+
+      <input class="btn btn--action" type='submit' value="Select day">
+    </form>
+
+<% if @deals.empty? %>
+  <p>No deals for this day.</p>
+<% end %>
+    <% unless @deals.empty? %>
+      <table class="deals-table"  style="width:50%">
+        <tr>
+          <th>Deal</th>
+          <th>Eatery name</th>
+          <th>Deal details</th>
+        </tr>
+        <% for deal in @deals%>
+          <tr>
+            <td><%= deal.deal_name %></td>
+            <td> <a href="/eateries/<%= deal.eatery.id %>"><%= deal.eatery.name %></a></td>
+            <td><a href="/deals/<%= deal.id %>">Deal Details</a></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </body>
+</html>

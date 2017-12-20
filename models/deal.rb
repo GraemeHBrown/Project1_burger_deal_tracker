@@ -72,8 +72,8 @@ class Deal
 
     def find_burgers_to_add()
       sql = "SELECT * FROM burgers WHERE id NOT IN (
-        SELECT burger_id FROM burgers_deals
-        WHERE deal_id = $1
+      SELECT burger_id FROM burgers_deals
+      WHERE deal_id = $1
       ) AND eatery_id = $2"
       values = [@id, @eatery_id]
       results = SqlRunner.run(sql, values)
@@ -101,9 +101,29 @@ class Deal
       return results.map { |deal| Deal.new(deal) }
     end
 
-    #deals order by day
     def self.all_deals_by_day()
+      sql = "SELECT * FROM deals
+      ORDER BY
+      CASE
+      WHEN Day = 'Sunday' THEN 1
+      WHEN Day = 'Monday' THEN 2
+      WHEN Day = 'Tuesday' THEN 3
+      WHEN Day = 'Wednesday' THEN 4
+      WHEN Day = 'Thursday' THEN 5
+      WHEN Day = 'Friday' THEN 6
+      WHEN Day = 'Saturday' THEN 7
+      END ASC;"
+      values = []
+      results = SqlRunner.run(sql, values)
+      return results.map { |deal| Deal.new(deal) }
+    end
 
+    def self.find_deals_for_day(day)
+      sql = "SELECT * FROM deals WHERE day = $1"
+      values = [day]
+      results = SqlRunner.run(sql, values)
+      binding.pry
+      return results.map { |deal| Deal.new(deal) }
     end
 
   end
