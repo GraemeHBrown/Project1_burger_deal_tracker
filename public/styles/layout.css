@@ -1,15 +1,29 @@
-.navigation {
+.navigation, .search-navigation {
   list-style: none;
   margin: 0;
   background: deepskyblue;
   display: flex;
   justify-content: center;
+
 }
 
-.navigation a {
+.navigation a, .search-navigation a {
   text-decoration: none;
+  font-size: 20px;
   display: block;
   padding: 1em;
   color: white;
   font-family: 'Itim', cursive;
+}
+
+.navigation li, .search-navigation li {
+  border: 1px solid white;
+}
+
+a:hover {
+  background: #8487e3;
+}
+
+h1 a {
+  text-decoration: none;
 }
