@@ -22,3 +22,11 @@ get('/search/day') do
   @deals = Deal.find_deals_for_day(day)
   erb(:"search/day")
 end
+
+get('/type') do
+  erb(:"search/type")
+end
+
+get('/location') do
+  erb(:"search/location")
+end
