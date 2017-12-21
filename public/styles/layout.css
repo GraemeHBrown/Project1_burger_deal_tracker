@@ -1,29 +1,130 @@
-.navigation, .search-navigation {
+body {
+  background-image: url("/images/burger-large.jpg");
+}
+
+
+.navigation {
   list-style: none;
   margin: 0;
-  background: deepskyblue;
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
 
 }
 
-.navigation a, .search-navigation a {
+.navigation a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 25px;
   display: block;
   padding: 1em;
   color: white;
   font-family: 'Itim', cursive;
+
 }
 
-.navigation li, .search-navigation li {
+.navigation li {
+  border: 2px solid white;
+  min-width: 350px;
+  text-align: center;
+}
+
+.navigation a:hover {
+  background: #d0d0ed;
+}
+
+.main-title a {
+    text-decoration: none;
+    font-family: 'Cherry Cream Soda', cursive;
+    color: white;
+    padding-left: 10px;
+}
+
+.main-title {
+    font-size: 30px;
+    position: center;
+}
+
+header {
+    background: black;
+    opacity: 0.8;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.content {
+  width: 50%;
+  margin: auto;
+  /* border: 1px solid white; */
+  color: white;
+  padding: 10px;
+  font-family: 'Itim', cursive;
+}
+
+.content h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.content p {
+  font-size: 18px;
+}
+
+.content a {
+  text-decoration: none;
+  /* color: #2810eb; */
+}
+
+.content a:hover {
+  background: #d0d0ed;
+  color: #2810eb;
+
+}
+
+.create-button {
+  background-color: white;
+   border: none;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+}
+
+.create-button a {
+    color: black;
+}
+
+.eateries-table {
+  width: 75%;
+  text-align: left;
+  font-size: 18px;
   border: 1px solid white;
 }
 
-a:hover {
-  background: #8487e3;
+.eateries-table th {
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid white;
 }
 
-h1 a {
-  text-decoration: none;
+.index-title {
+    font-size: 40px;
+    position: center;
+    color: white;
+    /* font-family: 'Akronim', cursive; */
+    font-family: 'Nothing You Could Do', cursive;
+    /* font-family: 'Sirin Stencil', cursive; */
+    /* font-family: 'Varela Round', sans-serif; */
 }
+
+/* font-family: 'Cherry Cream Soda', cursive;
+font-family: 'Akronim', cursive;
+font-family: 'Londrina Shadow', cursive;
+font-family: 'Yatra One', cursive; */

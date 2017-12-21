@@ -1,15 +1,33 @@
-<a href="/eateries/new">Create new eatery</a>
-<br>
-<h2>All Eateries</h2>
-<br>
+<div class="content">
 
-<div class="session-message">
-  <% if @message %>
+
+  
+    <a href="/eateries/new" class="create-button">Create new eatery</a>
+
+  <br>
+  <h2>All Eateries</h2>
+  <br>
+
+  <div class="session-message">
+    <% if @message %>
     <p><%= @message %></p>
+    <% end %>
+  </div>
+
+  <table class="eateries-table">
+    <tr>
+      <th>Eatery name:</th>
+      <th>Location: </th>
+      <th>Eatery details:</th>
+    </tr>
+
+    <% @eateries.each do |eatery| %>
+    <tr>
+      <td> <%= eatery.name%> </td>
+      <td> <%= eatery.location%> </td>
+      <td> <a href="/eateries/<%= eatery.id %>">Eatery Details</a></td>
+    </tr>
   <% end %>
+</table>
+
 </div>
-<% @eateries.each do |eatery| %>
-<p>Name: <%= eatery.name%></p>
-<p>Location: <%= eatery.location%></p>
-<a href="/eateries/<%= eatery.id %>">Eatery Details</a>
-<% end %>
