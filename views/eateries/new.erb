@@ -1,3 +1,6 @@
+<div class="content">
+
+
 <h2>Add a new eatery</h2>
 
 <div class="session-message">
@@ -6,16 +9,18 @@
   <% end %>
 </div>
 
-<form class="new-eatery-form" action="/eateries" method="POST">
-  <div class="">
+<form class="edit-form" action="/eateries" method="POST">
+
     <label for="name_input">Eatery name:</label>
     <input id="name_input" type="text" name="name" value="">
-  </div>
-  <div class="">
+
+
     <label for="location_input">Location:</label>
     <input id="location_input" required type="text" name="location" value="">
-  </div>
 
-  <input type="submit" name="" value="Create eatery">
+
+  <input class="button" type="submit" name="" value="Create eatery">
 
 </form>
+
+</div>

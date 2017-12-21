@@ -122,7 +122,6 @@ class Deal
       sql = "SELECT * FROM deals WHERE day = $1"
       values = [day]
       results = SqlRunner.run(sql, values)
-      binding.pry
       return results.map { |deal| Deal.new(deal) }
     end
 

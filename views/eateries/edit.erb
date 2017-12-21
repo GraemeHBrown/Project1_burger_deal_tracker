@@ -1,16 +1,19 @@
-<h2>Edit Eatery Details</h2>
+<div class="content">
 
-<form class="edit-eatery" action="/eateries/<%= @eatery.id %>" method="POST">
-  <div class="">
+  <h2>Edit Eatery Details</h2>
+
+  <form class="edit-form" action="/eateries/<%= @eatery.id %>" method="POST">
+
     <label for="name_input">Name:</label>
     <input id="name_input" type="text" name="name" value="<%= @eatery.name %>">
-  </div>
-  <div class="">
+
+
     <label for="location_input">Location:</label>
     <input id="location_input" type="text" name="location" value="<%= @eatery.location %>">
-  </div>
+
+    <div class="buttons-container">
+      <input class="button" type="submit" name="" value="Update Eatery">
+    </div>
+  </form>
+
 </div>
-<div class="">
-  <input type="submit" name="" value="Update Eatery">
-</div>
-</form>
