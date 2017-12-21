@@ -4,18 +4,17 @@
 
   <div class="session-message">
     <% if @message %>
-      <p><%= @message %></p>
+    <p><%= @message %></p>
     <% end %>
   </div>
-
+  
   <form class="edit-form" action="/burgers" method="POST">
 
-      <label for="name_input">Burger name:</label>
-      <input id="name_input" required type="text" name="name" value="">
+    <label for="name_input">Burger name:</label>
+    <input id="name_input" required type="text" name="name" value="">
 
-
-      <label for="price_input">price:</label>
-      <input id="price_input" required type="text" name="price" value="">
+    <label for="price_input">price:</label>
+    <input id="price_input" required type="text" name="price" value="">
 
     <input type="hidden" name="eatery_id" value="<%= @eatery_id %>">
     <input class="button submit" type="submit" name="" value="Create burger">

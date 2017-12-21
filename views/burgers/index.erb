@@ -1,38 +1,37 @@
-
 <div class="content">
 
-<h2>All Burgers</h2>
+  <h2>All Burgers</h2>
 
-<div class="session-message">
-  <% if @message %>
+  <div class="session-message">
+    <% if @message %>
     <p><%= @message %></p>
-  <% end %>
-</div>
-<form action="/burgers">
-  <label>
-    Select an eatery:
-    <select name="eatery_id">
-      <% for eatery in @eateries %>
-      <option value="<%= eatery.id %>"><%= eatery.name %></option>
-      <% end %>
-    </select>
-  </label>
-
-  <input class="button submit" type='submit' value="Select eatery">
-</form>
-
-<% unless @eatery ==nil %>
-  <h3>Menu for: <%= @eatery.name %></h3>
-    <% if @burgers.empty? %>
-      <h3>No burgers listed for this eatery</h3>
     <% end %>
+  </div>
+  <form action="/burgers">
+    <label>
+      Select an eatery:
+      <select name="eatery_id">
+        <% for eatery in @eateries %>
+        <option value="<%= eatery.id %>"><%= eatery.name %></option>
+        <% end %>
+      </select>
+    </label>
+
+    <input class="button submit" type='submit' value="Select eatery">
+  </form>
+
+  <% unless @eatery ==nil %>
+  <h3>Menu for: <%= @eatery.name %></h3>
+  <% if @burgers.empty? %>
+  <h3>No burgers listed for this eatery</h3>
+  <% end %>
   <% unless @burgers.empty? %>
-    <table class="display-table">
-      <tr>
-        <th>Burger name:</th>
-        <th>Burger price: </th>
-        <th>Burger details:</th>
-      </tr>
+  <table class="display-table">
+    <tr>
+      <th>Burger name:</th>
+      <th>Burger price: </th>
+      <th>Burger details:</th>
+    </tr>
 
     <% @burgers.each do |burger| %>
     <tr>
@@ -41,13 +40,13 @@
       <td> <a href="/burgers/<%= burger.id %>">Burger Details</a></td>
     </tr>
     <% end %>
+  </table>
+    <% end %>
 
-  <% end %>
-
-  <form class="create-button" action="/burgers/new">
-    <input type="hidden" name="eatery_id" value="<%=@eatery.id%>">
+    <form class="create-button" action="/burgers/new">
+      <input type="hidden" name="eatery_id" value="<%=@eatery.id%>">
       <input class="button" type="submit" name="" value="Add New Burger">
-  </form>
-<% end %>
+    </form>
+    <% end %>
 
-</div>
+  </div>

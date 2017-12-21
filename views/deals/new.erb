@@ -1,3 +1,5 @@
+<div class="content">
+
 <h2>Add a new deal</h2>
 
 <div class="session-message">
@@ -6,14 +8,13 @@
   <% end %>
 </div>
 
-<form class="new-deal-form" action="/deals" method="POST">
-  <div class="">
+<form class="edit-form" action="/deals" method="POST">
+
     <label for="deal_name_input">Deal name:</label>
     <input id="deal_name_input" required type="text" name="deal_name" value="">
-  </div>
-  <div class="">
-    Select a day:
-    <select name="day">
+
+  <label for="day_select">  Select a day:</label>
+    <select id="day_select" name="day">
       <option value="Monday">Monday</option>
       <option value="Tuesday">Tuesday</option>
       <option value="Wednesday">Wednesday</option>
@@ -22,8 +23,9 @@
       <option value="Saturday">Saturday</option>
       <option value="Sunday">Sunday</option>
     </select>
-  </div>
-  <input type="hidden" name="eatery_id" value="<%= @eatery_id %>">
-  <input type="submit" name="" value="Create deal">
 
-</form>
+  <input type="hidden" name="eatery_id" value="<%= @eatery_id %>">
+  <input class="button submit" type="submit" name="" value="Create deal">
+
+  </form>
+</div>

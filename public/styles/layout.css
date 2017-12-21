@@ -122,13 +122,24 @@ header {
 
 .edit-form input {
   display: inline-block;
- margin-bottom: 25px;
- margin-top: 25px;
- clear: right;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  clear: right;
 }
 
 .buttons-container {
   display: inline-block;
+}
+
+.search {
+  margin-top: 30px;
+  margin-left: 80px;
+}
+
+.search-buttons {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
 }
 
 .inline-button {

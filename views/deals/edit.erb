@@ -1,24 +1,30 @@
-<h2>Edit Deal Details</h2>
+<div class="content">
 
-<form class="edit-deal" action="/deals/<%= @deal.id %>" method="POST">
-  <div class="">
-    <label for="deal_name_input">Deal name:</label>
-    <input id="deal_name_input" type="text" name="deal_name" value="<%= @deal.deal_name %>">
+  <h2>Edit Deal Details</h2>
+
+  <div class="session-message">
+    <% if @message %>
+      <p><%= @message %></p>
+    <% end %>
   </div>
-  <div class="">
-    <label for="day_input">Day:</label>
-    <select id="day_select" class="" name="day">
-      <option value="Monday" <%= "selected" if @deal.day == "Monday" %> >Monday</option>
-      <option value="Tuesday" <%= "selected" if @deal.day == "Tuesday" %> >Tuesday</option>
-      <option value="Wednesday" <%= "selected" if @deal.day == "Wednesday" %> >Wednesday</option>
-      <option value="Thursday" <%= "selected" if @deal.day == "Thursday" %> >Thursday</option>
-      <option value="Friday" <%= "selected" if @deal.day == "Friday" %> >Friday</option>
-      <option value="Saturday" <%= "selected" if @deal.day == "Saturday" %> >Saturday</option>
-      <option value="Sunday" <%= "selected" if @deal.day == "Sunday" %> >Sunday</option>
-    </select>
-  </div>
+
+  <form class="edit-form" action="/deals/<%= @deal.id %>" method="POST">
+
+      <label for="deal_name_input">Deal name:</label>
+      <input id="deal_name_input" type="text" name="deal_name" value="<%= @deal.deal_name %>">
+
+      <label for="day_input">Day:</label>
+      <select id="day_select" class="" name="day">
+        <option value="Monday" <%= "selected" if @deal.day == "Monday" %> >Monday</option>
+        <option value="Tuesday" <%= "selected" if @deal.day == "Tuesday" %> >Tuesday</option>
+        <option value="Wednesday" <%= "selected" if @deal.day == "Wednesday" %> >Wednesday</option>
+        <option value="Thursday" <%= "selected" if @deal.day == "Thursday" %> >Thursday</option>
+        <option value="Friday" <%= "selected" if @deal.day == "Friday" %> >Friday</option>
+        <option value="Saturday" <%= "selected" if @deal.day == "Saturday" %> >Saturday</option>
+        <option value="Sunday" <%= "selected" if @deal.day == "Sunday" %> >Sunday</option>
+      </select>
+      <div class="">
+        <input class="button" type="submit" name="" value="Update Deal">
+      </div>
+  </form>
 </div>
-<div class="">
-  <input type="submit" name="" value="Update Deal">
-</div>
-</form>

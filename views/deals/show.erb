@@ -1,9 +1,20 @@
-<h2>Deal Details</h2>
+<div class="content">
 
-<p>Deal name: <%= @deal.deal_name %></p>
-<p>Day available: <%= @deal.day %></p>
-<a href="/deals/<%= @deal.id %>/edit">Edit deal details</a>
-<a href="/deals/<%= @deal.id %>/add_burger">Add burger to deal</a>
-<form class="delete-button" action="/deals/<%= @deal.id %>/delete" method="POST">
-    <input type="submit" name="delete-button" value="Delete Deal">
-</form>
+  <h2>Deal Details</h2>
+
+  <p>Deal name: <%= @deal.deal_name %></p>
+  <p>Day available: <%= @deal.day %></p>
+  <div class="buttons-container">
+    <div class="inline-button">
+     <a class="button" href="/deals/<%= @deal.id %>/edit">Edit deal details</a>
+    </div>
+    <div class="inline-button">
+      <a  class="button" href="/deals/<%= @deal.id %>/add_burger">Add burger to deal</a>
+    </div>
+    <div class="inline-button">
+      <form class="delete-button" action="/deals/<%= @deal.id %>/delete" method="POST">
+        <input class="button" type="submit" name="delete-button" value="Delete Deal">
+      </form>
+    </div>
+  </div>
+</div>
