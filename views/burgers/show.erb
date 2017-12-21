@@ -1,8 +1,17 @@
-<h2>Burger Details</h2>
+<div class="content">
 
-<p>Name: <%= @burger.name %></p>
-<p>Price: <%= @burger.price %></p>
-<a href="/burgers/<%= @burger.id %>/edit">Edit burger details</a>
-<form class="delete-button" action="/burgers/<%= @burger.id%>/delete" method="POST">
-    <input type="submit" name="delete-button" value="Delete Burger">
-</form>
+  <h2>Burger Details</h2>
+
+  <p>Name: <%= @burger.name %></p>
+  <p>Price: <%= @burger.price %></p>
+  <div class="buttons-container">
+    <div class="inline-button">
+      <a href="/burgers/<%= @burger.id %>/edit" class="button">Edit burger details</a>
+    </div>
+    <div class="inline-button">
+      <form class="" action="/burgers/<%= @burger.id%>/delete" method="POST">
+        <input class="button" type="submit" name="delete-button" value="Delete Burger">
+      </form>
+    </div>
+  </div>
+</div>

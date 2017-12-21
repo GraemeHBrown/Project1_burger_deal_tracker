@@ -2,6 +2,10 @@ body {
   background-image: url("/images/burger-large.jpg");
 }
 
+.session-message {
+  color: red;
+  background-color: white;
+}
 
 .navigation {
   list-style: none;
@@ -97,6 +101,12 @@ header {
   font-family: 'Itim', cursive;
 }
 
+.submit {
+  font-size: 13px;
+  padding: 7px 7px;
+  border-radius: 5px;
+}
+
 .button:hover {
   background: #d0d0ed;
 }
@@ -125,14 +135,14 @@ header {
   display: inline-block;
 }
 
-.eateries-table {
-  width: 75%;
+.display-table {
+  width: 100%;
   text-align: left;
   font-size: 18px;
   border: 1px solid white;
 }
 
-.eateries-table th {
+.display-table th {
   font-size: 20px;
   font-weight: bold;
   border-bottom: 1px solid white;
