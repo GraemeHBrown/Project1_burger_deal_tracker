@@ -63,7 +63,6 @@ header {
 .content {
   width: 50%;
   margin: auto;
-  /* border: 1px solid white; */
   color: white;
   padding: 10px;
   font-family: 'Itim', cursive;
@@ -80,7 +79,6 @@ header {
 
 .content a {
   text-decoration: none;
-  /* color: #2810eb; */
 }
 
 .content a:hover {
@@ -163,13 +161,5 @@ header {
   font-size: 40px;
   position: center;
   color: white;
-  /* font-family: 'Akronim', cursive; */
   font-family: 'Nothing You Could Do', cursive;
-  /* font-family: 'Sirin Stencil', cursive; */
-  /* font-family: 'Varela Round', sans-serif; */
 }
-
-/* font-family: 'Cherry Cream Soda', cursive;
-font-family: 'Akronim', cursive;
-font-family: 'Londrina Shadow', cursive;
-font-family: 'Yatra One', cursive; */
